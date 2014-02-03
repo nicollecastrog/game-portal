@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jogo - <%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+
+      <div id='topstuff'>
+        <div class='container'>
+          <div id='logo' class='five columns alpha'>
+            <h1>Jogo</h1>
+          </div>
+
+          <div class='warning'>
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <% end %>
+          </div> <!-- closes .warning -->
+
+          <ul>
+            <li>
+              <%=link_to 'login', new_session_path %>
+            </li>
+            <li>
+              <%=link_to 'sign up', new_user_path %>
+            </li>
+            <br>
+            <li>
+              <% if current_user %>
+              <%=current_user.email%><br>
+              <% link_to 'profile', current_user %><br>
+              <%= link_to 'logout', logout_path %>
+              <% end %>
+            </li>
+          </ul>
+        </div> 
+      </div> <!-- closes #topstuff -->
+
+
+      <div class="container">
+      
+      <div id='below_top' class='sixteen columns alpha omega'>
+        <nav class='three columns alpha'>
+          <ul>
+            <li>
+              <%=link_to 'All Games', games_path %>
+            </li>
+            <li>
+              <%=link_to 'Tic Tac Toe', tictacs_path %>
+            </li>
+            <li>
+              <% if current_user %>
+                <%=link_to 'My Profile', current_user %>
+              <% else %>
+                <%=link_to 'Log In', new_session_path %><br />
+                <%=link_to 'Sign Up', new_user_path %>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+
+        <div id='main_content' class='thirteen columns omega'>
+          <div id='content'>
+            <%= content_tag :h1, yield(:title) if show_title? %>
+            <%= yield %>
+          </div> <!-- closes #content -->
+        </div> <!-- closes #main_content -->
+
+      </div> <!-- closes #below_top -->
+
+    </div> <!-- closes .container -->
+  </body>
+</html>

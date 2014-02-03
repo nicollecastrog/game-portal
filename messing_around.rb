@@ -5,32 +5,32 @@ end
 
 def next_turn
   if @turn == 1
-    return 2
+    @turn = 2
   else 
-    return 1
+   @turn = 1
   end
 end
 
 
 def add_mark(ans)
   if @array[ans] == 0 && @turn == 1
-    @array[ans] == 1
-    puts @array[ans]
-    puts "You've marked space #{ans}"
+    @array[ans] = 1
+    print @array
+    puts "\nPlayer #{@turn} marked space #{ans}"
   elsif @array[ans] == 0 && @turn == 2
-    @array[ans] == 2
-    puts @array[ans]
-    puts "You've marked space #{ans}"
+    @array[ans] = 2
+    print @array
+    puts "\nPlayer #{@turn} marked space #{ans}"
   else
     puts "That space is taken. Choose a different space"
   end
 end
 
-def check_rows(array)
+def check_rows
     i = 0
     while i < 9 do
-        if (array[i] != 0 and array[i] == array[i+1] and array[i] == array[i+2])
-            return array[i]
+        if (@array[i] != 0 && @array[i] == @array[(i+1)] && @array[i] == @array[(i+2)])
+            return @array[i]
             puts "You win!"
         end
         i += 3
@@ -38,33 +38,33 @@ def check_rows(array)
     return 0
 end
     
-def check_columns(array)
+def check_columns
     for i in 0...3
-        if (array[i] != 0 and array[i] == array[(i+3)] and array[i] == array[(i+6)])
-            return array[i]
+        if (@array[i] != 0 && @array[i] == @array[(i+3)] && @array[i] == @array[(i+6)])
+            return @array[i]
             puts "You win!"
         end
     end
     return 0  
 end
 
-def check_diagonals(array)
+def check_diagonals  
   for i in 0...3
-        if (array[i] != 0 and array[i] == array[(i+4)] and array[i] == array[(i+8)])
-            return array[i]
+        if (@array[i] != 0 && @array[i] == @array[(i+4)] && @array[i] == @array[(i+8)])
+            return @array[i]
             puts "You win!"
-        elsif (array[i] != 0 and array[i] == array[(i+2)] and array[i] == array[(i+4)])
-            return array[i]
+        elsif (@array[i] != 0 && @array[i] == @array[(i+2)] && @array[i] == @array[(i+4)])
+            return @array[i]
             puts "You win!"
         end
     end
     return 0     
 end
 
-def get_first_empty_move(array)
+def check_empty_move  
   i = 0
     while i < 9 do
-        if (array[i] == 0)
+        if (@array[i] == 0)
             return i
         end
         i += 1
@@ -80,22 +80,25 @@ def directions
   puts ("6|7|8")
 end
 
-directions
+def play
+  next_turn
+  directions
+  ans = gets.chomp.to_i
+  add_mark(ans)
+  check_rows
+  check_columns
+  check_diagonals
+  check_empty_move
+end
+
+
 new_board
 @turn = 1
-whose_turn
-ans = gets.chomp.to_i
-add_mark(ans)
-next_turn
 directions
-whose_turn
 ans = gets.chomp.to_i
 add_mark(ans)
-array = @array
-check_rows(array)
-check_columns(array)
-check_diagonals(array)
-get_first_empty_move(array)
+8.times {play}
+
 
 
 

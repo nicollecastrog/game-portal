@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Password digest:</b>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @user.score %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>

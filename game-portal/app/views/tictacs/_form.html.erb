@@ -1,0 +1,73 @@
+<%= form_for(@tictac) do |f| %>
+  <% if @tictac.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tictac.errors.count, "error") %> prohibited this tictac from being saved:</h2>
+
+      <ul>
+      <% @tictac.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :game_id %><br />
+    <%= f.number_field :game_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sq0 %><br />
+    <%= f.text_field :sq0 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq1 %><br />
+    <%= f.text_field :sq1 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq2 %><br />
+    <%= f.text_field :sq2 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq3 %><br />
+    <%= f.text_field :sq3 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq4 %><br />
+    <%= f.text_field :sq4 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq5 %><br />
+    <%= f.text_field :sq5 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq6 %><br />
+    <%= f.text_field :sq6 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq7 %><br />
+    <%= f.text_field :sq7 %>
+  </div>
+  <div class="field">
+    <%= f.label :sq8 %><br />
+    <%= f.text_field :sq8 %>
+  </div>
+  <div class="field">
+    <%= f.label :player1 %><br />
+    <%= f.number_field :player1 %>
+  </div>
+  <div class="field">
+    <%= f.label :player2 %><br />
+    <%= f.number_field :player2 %>
+  </div>
+  <div class="field">
+    <%= f.label :result %><br />
+    <%= f.text_field :result %>
+  </div>
+  <div class="field">
+    <%= f.label :game %><br />
+    <%= f.text_field :game %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

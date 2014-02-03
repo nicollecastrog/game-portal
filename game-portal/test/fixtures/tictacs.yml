@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_id: 1
+  sq0: MyString
+  sq1: MyString
+  sq2: MyString
+  sq3: MyString
+  sq4: MyString
+  sq5: MyString
+  sq6: MyString
+  sq7: MyString
+  sq8: MyString
+  player1: 1
+  player2: 1
+  result: MyString
+  game: 
+
+two:
+  game_id: 1
+  sq0: MyString
+  sq1: MyString
+  sq2: MyString
+  sq3: MyString
+  sq4: MyString
+  sq5: MyString
+  sq6: MyString
+  sq7: MyString
+  sq8: MyString
+  player1: 1
+  player2: 1
+  result: MyString
+  game: 
