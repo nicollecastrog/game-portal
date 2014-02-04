@@ -36,7 +36,7 @@
             <li>
               <% if current_user %>
               <%=current_user.email%><br>
-              <% link_to 'profile', current_user %><br>
+              <%=link_to 'My Profile', current_user %><br>
               <%= link_to 'logout', logout_path %>
               <% end %>
             </li>

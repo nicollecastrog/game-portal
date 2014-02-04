@@ -1,5 +1,16 @@
 <h1>New tictac</h1>
 
-<%= render 'form' %>
+<%= form_for(@tictac) do |f| %>
+
+<div class="field">
+  <%= f.label :player2, "" %><br />
+  <%= f.number_field :player2 %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>
 
 <%= link_to 'Back', tictacs_path %>

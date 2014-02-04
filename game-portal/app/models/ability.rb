@@ -8,13 +8,16 @@ class Ability
       can :manage, :all 
     elsif user.role?(:general)
       can :manage, Tictac
-      can :read, :all
+      can :index, User
+      can :read, Game
       can [:show, :update, :destroy], User, :id => user.id
       cannot [:create], User
       cannot [:create, :update, :destroy, :new], Game
     else
-      can [:show, :create, :new], User
-      can :read, :all
+      can [:create, :new], User
+      can [:read], Tictac
+      can [:read], Game
+      cannot [:create], Tictac
       # read is the equivalent of the index and show views
     end
 
