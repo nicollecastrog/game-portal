@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203164533) do
+ActiveRecord::Schema.define(:version => 20140205102934) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -19,22 +19,25 @@ ActiveRecord::Schema.define(:version => 20140203164533) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "tictacs", :force => true do |t|
-    t.integer  "game_id"
-    t.string   "sq0"
-    t.string   "sq1"
-    t.string   "sq2"
-    t.string   "sq3"
-    t.string   "sq4"
-    t.string   "sq5"
-    t.string   "sq6"
-    t.string   "sq7"
-    t.string   "sq8"
-    t.integer  "player1"
-    t.integer  "player2"
-    t.string   "result"
+  create_table "moves", :force => true do |t|
+    t.integer  "tictac_id"
+    t.integer  "player_id"
+    t.integer  "square"
+    t.string   "symbol"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  add_index "moves", ["tictac_id"], :name => "index_moves_on_tictac_id"
+
+  create_table "tictacs", :force => true do |t|
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.string   "name"
+    t.string   "result"
   end
 
   add_index "tictacs", ["game_id"], :name => "index_tictacs_on_game_id"

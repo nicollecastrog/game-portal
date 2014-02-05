@@ -41,6 +41,7 @@ class TictacsController < ApplicationController
   # POST /tictacs.json
   def create
     @tictac = Tictac.new(params[:tictac])
+    @tictac.player1_id = current_user.id
 
     respond_to do |format|
       if @tictac.save

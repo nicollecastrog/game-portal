@@ -2,15 +2,29 @@
 
 <%= form_for(@tictac) do |f| %>
 
-<div class="field">
-  <%= f.label :player2, "" %><br />
-  <%= f.number_field :player2 %>
-</div>
+  <% if @tictac.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tictac.errors.count, "error") %> prohibited this tictac from being saved:</h2>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
+      <ul>
+      <% @tictac.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "What would you like to name this game?" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<!-- add player 2 or computer -->
+
 
 <% end %>
 
-<%= link_to 'Back', tictacs_path %>
+<%= link_to 'All Tic-Tac-Toe Games', tictacs_path %>

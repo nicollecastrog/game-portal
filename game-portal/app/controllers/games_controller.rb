@@ -15,9 +15,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @game }
+    if @game.name == 'Tic Tac Toe'
+      redirect_to tictacs_path
     end
   end
 

@@ -1,5 +1,8 @@
 GamePortal::Application.routes.draw do
-  resources :tictacs
+
+  resources :tictacs do
+    resources :moves
+  end
 
 
   resources :games

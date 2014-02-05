@@ -1,6 +1,43 @@
-<h1>Editing tictac</h1>
+<h1><%= @tictac.name %></h1>
 
-<%= render 'form' %>
+<%= form_for(@tictac) do |f| %>
 
-<%= link_to 'Show', @tictac %> |
-<%= link_to 'Back', tictacs_path %>
+  <% if @tictac.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tictac.errors.count, "error") %> prohibited this tictac from being saved:</h2>
+
+      <ul>
+      <% @tictac.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table id='tictac_board'>
+  <%= f.fields_for :moves do |m| %>
+    <tr>
+      <td class='square'><% @tictac.m.square = 0 %><%= m.text_field :symbol %></td>
+      <td class='square'>X</td>
+      <td class='square'>X</td>
+    </tr>
+    <tr>
+      <td class='square'>O</td>
+      <td class='square'>O</td>
+      <td class='square'>O</td>
+    </tr>
+    <tr>
+      <td class='square'>X</td>
+      <td class='square'>X</td>
+      <td class='square'>X</td>
+    </tr>
+  </table>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'All Tic-Tac-Toe Games', tictacs_path %>

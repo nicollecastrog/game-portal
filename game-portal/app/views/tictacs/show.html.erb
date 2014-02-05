@@ -1,75 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Game:</b>
-  <%= @tictac.game_id %>
+<h1>
+  <%= @tictac.name %>
+</h1>
+
+<%if @tictac.result != 'still_active' %>
+  <p>Result: <%= @tictac.result %></p>
+<% else %>
+  <h3><%= link_to 'PLAY', edit_tictac_path %></h3>
+<% end %>
+
+<p>Current Board Status: </p>
+
+<table id='tictac_board'>
+  <tr>
+    <td class='square'>X</td>
+    <td class='square'>X</td>
+    <td class='square'>X</td>
+  </tr>
+  <tr>
+    <td class='square'>O</td>
+    <td class='square'>O</td>
+    <td class='square'>O</td>
+  </tr>
+  <tr>
+    <td class='square'>X</td>
+    <td class='square'>X</td>
+    <td class='square'>X</td>
+  </tr>
+</table>
+
+<p class='scoreboard'>
 </p>
 
-<p>
-  <b>Sq0:</b>
-  <%= @tictac.sq0 %>
-</p>
-
-<p>
-  <b>Sq1:</b>
-  <%= @tictac.sq1 %>
-</p>
-
-<p>
-  <b>Sq2:</b>
-  <%= @tictac.sq2 %>
-</p>
-
-<p>
-  <b>Sq3:</b>
-  <%= @tictac.sq3 %>
-</p>
-
-<p>
-  <b>Sq4:</b>
-  <%= @tictac.sq4 %>
-</p>
-
-<p>
-  <b>Sq5:</b>
-  <%= @tictac.sq5 %>
-</p>
-
-<p>
-  <b>Sq6:</b>
-  <%= @tictac.sq6 %>
-</p>
-
-<p>
-  <b>Sq7:</b>
-  <%= @tictac.sq7 %>
-</p>
-
-<p>
-  <b>Sq8:</b>
-  <%= @tictac.sq8 %>
-</p>
-
-<p>
-  <b>Player1:</b>
-  <%= @tictac.player1 %>
-</p>
-
-<p>
-  <b>Player2:</b>
-  <%= @tictac.player2 %>
-</p>
-
-<p>
-  <b>Result:</b>
-  <%= @tictac.result %>
-</p>
-
-<p>
-  <b>Game:</b>
-  <%= @tictac.game %>
-</p>
-
-
-<%= link_to 'Edit', edit_tictac_path(@tictac) %> |
 <%= link_to 'Back', tictacs_path %>

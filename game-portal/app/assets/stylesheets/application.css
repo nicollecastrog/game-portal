@@ -102,7 +102,21 @@ ul {
   list-style: none;
 }
 
-/*#recipe_table {
-  border-spacing: 12px;
-  border-collapse: none;
-}*/
+#tictac_board {
+
+}
+
+.square {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.tictac_display{
+  margin-bottom: 55px;
+}
+
+
+
+
+
+

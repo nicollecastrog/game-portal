@@ -1,49 +1,63 @@
-<h1>Listing tictacs</h1>
+<p><%= link_to 'New Tictac', new_tictac_path %></p>
 
-<table>
+
+<h1>Available Tic-Tac-Toe Games</h1>
+
+<table class='tictac_display'>
   <tr>
-    <th>Game</th>
-    <th>Sq0</th>
-    <th>Sq1</th>
-    <th>Sq2</th>
-    <th>Sq3</th>
-    <th>Sq4</th>
-    <th>Sq5</th>
-    <th>Sq6</th>
-    <th>Sq7</th>
-    <th>Sq8</th>
+    <th>Game Type</th>
+    <th>Game Name</th>
     <th>Player1</th>
     <th>Player2</th>
     <th>Result</th>
-    <th>Game</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
-<% @tictacs.each do |tictac| %>
+  <% @tictacs.each do |tictac| %>
+  <% if tictac.result == 'still_active' %>
   <tr>
-    <td><%= tictac.game_id %></td>
-    <td><%= tictac.sq0 %></td>
-    <td><%= tictac.sq1 %></td>
-    <td><%= tictac.sq2 %></td>
-    <td><%= tictac.sq3 %></td>
-    <td><%= tictac.sq4 %></td>
-    <td><%= tictac.sq5 %></td>
-    <td><%= tictac.sq6 %></td>
-    <td><%= tictac.sq7 %></td>
-    <td><%= tictac.sq8 %></td>
-    <td><%= tictac.player1 %></td>
-    <td><%= tictac.player2 %></td>
+    <td><%= tictac.game.name %></td>
+    <td><%= tictac.name %></td>
+    <td><%= tictac.player1_id %></td>
+    <td><%= tictac.player2_id %></td>
     <td><%= tictac.result %></td>
-    <td><%= tictac.game %></td>
-    <td><%= link_to 'Show', tictac %></td>
-    <td><%= link_to 'Edit', edit_tictac_path(tictac) %></td>
+    <td><%= link_to 'Play', edit_tictac_path(tictac) %></td>
     <td><%= link_to 'Destroy', tictac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
+  <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Tictac', new_tictac_path %>
+<h1>Completed Tic-Tac-Toe Games</h1>
+
+<table class='tictac_display'>
+  <tr>
+    <th>Game Type</th>
+    <th>Game Name</th>
+    <th>Player1</th>
+    <th>Player2</th>
+    <th>Result</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @tictacs.each do |tictac| %>
+  <% if tictac.result != 'still_active' %>
+  <tr>
+    <td><%= tictac.game.name %></td>
+    <td><%= tictac.name %></td>
+    <td><%= tictac.player1_id %></td>
+    <td><%= tictac.player2_id %></td>
+    <td><%= tictac.result %></td>
+    <td><%= link_to 'Show', tictac %></td>
+    <td><%= link_to 'Destroy', tictac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
+
+
+
