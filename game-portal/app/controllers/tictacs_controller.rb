@@ -54,6 +54,13 @@ class TictacsController < ApplicationController
     end
   end
 
+  def join 
+    @tictac = Tictac.find(params[:id])
+    @tictac.player2_id = current_user.id
+    @tictac.save
+    redirect_to @tictac
+  end
+
   # PUT /tictacs/1
   # PUT /tictacs/1.json
   def update

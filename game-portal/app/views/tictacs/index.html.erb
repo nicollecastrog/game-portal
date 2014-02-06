@@ -19,14 +19,37 @@
   <tr>
     <td><%= tictac.game.name %></td>
     <td><%= tictac.name %></td>
-    <td><%= tictac.player1_id %></td>
-    <td><%= tictac.player2_id %></td>
-    <td><%= tictac.result %></td>
-    <td><%= link_to 'Play', edit_tictac_path(tictac) %></td>
-    <td><%= link_to 'Destroy', tictac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if tictac.player1_id == current_user.id%>
+      <td style='color: green; font-weight: bold;'>You</td>
+      <% if tictac.player2_id != nil %>
+      <td><%= tictac.player2.name %></td>
+      <% else %>
+      <td></td>
+      <% end %> <!-- closing if player 2 exists -->
+      <td>Active</td>
+      <td><%= link_to 'Continue', edit_tictac_path(tictac) %></td>
+    <% else %> <!-- else if player1 is not current user -->
+      <td><%= tictac.player1.name %></td>
+      <% if tictac.player2_id != nil %>
+        <% if tictac.player2_id == current_user.id %> <!-- if player 1 is NOT current user AND player 2 IS current user -->
+        <td style='color: green; font-weight: bold;'>You</td>
+        <td>Active</td>
+        <td><%= link_to 'Continue', edit_tictac_path(tictac) %></td>
+        <% else %> <!-- if player 1 is NOT current user AND player 2 is NOT current user -->
+        <td><%= tictac.player2.name %></td>
+        <td>Active</td>
+        <td></td>
+        <% end %> <!-- closing p1 != current_user p2 == current_user -->
+      <% else %> <!-- elsif player 2 does NOT exist -->
+      <td></td> <!-- no player 2 name -->
+      <td>Active</td>
+      <td><%= link_to 'Join', join_path(tictac) %></td>
+      <% end %> <!-- closing if player 2 exists and player is not current user-->
+    <% end %> <!-- closing if player 1 is current user (else)-->
+    
   </tr>
-  <% end %>
-  <% end %>
+  <% end %> <!-- closing if still active -->
+  <% end %> <!-- closing for each tictac -->
 </table>
 
 
@@ -49,7 +72,7 @@
   <tr>
     <td><%= tictac.game.name %></td>
     <td><%= tictac.name %></td>
-    <td><%= tictac.player1_id %></td>
+    <td><%= tictac.player1.name %></td>
     <td><%= tictac.player2_id %></td>
     <td><%= tictac.result %></td>
     <td><%= link_to 'Show', tictac %></td>

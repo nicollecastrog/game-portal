@@ -4,6 +4,7 @@ GamePortal::Application.routes.draw do
     resources :moves
   end
 
+  get "/tictacs/:id/join", to: "tictacs#join", as: :join
 
   resources :games
 

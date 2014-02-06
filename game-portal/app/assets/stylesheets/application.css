@@ -13,7 +13,7 @@
  */
 
 body {
-background: url("http://hdwallpapercollection.com/wp-content/uploads/2013/02/yummy-sea-food-wallpaper.jpg");
+background: url("http://backgroundku.com/wp-content/uploads/2013/08/Super%2BMario%2BBros%2Bhd%2Bwallpaper%2B3.jpg");
 /* the follow is the code to have the image display as a full page */
 background-position: center;
 background-attachment: fixed;
@@ -36,11 +36,11 @@ h1 {
   color: white;
 }
 
-#topstuff a:visited , nav a:visited{
+#topstuff a:visited, nav a:visited{
   color: white;
 }
 
-#topstuff a:hover , nav a:hover{
+#topstuff a:hover, nav a:hover{
   color: white;
   background-color: rgba(255, 255, 255, 0.0);
 }
@@ -48,6 +48,11 @@ h1 {
 #topstuff ul {
   text-align: right;
   margin-right: 2%;
+  color: white;
+}
+
+#topstuff a {
+  color: white;
 }
 
 #logo {
@@ -113,6 +118,11 @@ ul {
 
 .tictac_display{
   margin-bottom: 55px;
+}
+
+.tictac_display td, th {
+  padding: 5px 12px;
+  text-align: left;
 }
 
 
