@@ -1,5 +1,6 @@
 <h1>New tictac</h1>
 
+<div class='make_float_left'>
 <%= form_for(@tictac) do |f| %>
 
   <% if @tictac.errors.any? %>
@@ -26,5 +27,6 @@
 
 
 <% end %>
+</div>
 
-<%= link_to 'All Tic-Tac-Toe Games', tictacs_path %>
+<div class='make_block_clear'><%= link_to 'All Tic-Tac-Toe Games', tictacs_path %></div>

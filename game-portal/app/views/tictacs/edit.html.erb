@@ -2,41 +2,89 @@
 
 <%= form_for(@tictac) do |f| %>
 
-  <% if @tictac.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tictac.errors.count, "error") %> prohibited this tictac from being saved:</h2>
-
-      <ul>
-      <% @tictac.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <table id='tictac_board'>
-  <%= f.fields_for :moves do |m| %>
+    <%= f.fields_for :move do |m| %>
     <tr>
-      <td class='square'><% @tictac.m.square = 0 %><%= m.text_field :symbol %></td>
-      <td class='square'>X</td>
-      <td class='square'>X</td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(0) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(0).symbol%></div>
+        <% else %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="sq0">X</button>
+          <% else %>
+          <button type="submit" name="square" value="sq0">O</button>
+          <% end %>
+        <% end %>  
+      </td>
+ 
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <td class='square'>O</td>
-      <td class='square'>O</td>
-      <td class='square'>O</td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <td class='square'>X</td>
-      <td class='square'>X</td>
-      <td class='square'>X</td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
+      <td class='square'>
+        <% if current_user.id == @tictac.player1_id%>
+        <button type="submit" value="sq0">X</button>
+        <% else %>
+        <button type="submit" value="sq0">O</button>
+        <% end %>
+      </td>
     </tr>
+    <% end %>
   </table>
-  <% end %>
 
 
   <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
 

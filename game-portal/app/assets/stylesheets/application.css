@@ -114,6 +114,8 @@ ul {
 .square {
   border: 1px solid black;
   padding: 15px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .tictac_display{
@@ -125,8 +127,26 @@ ul {
   text-align: left;
 }
 
+.new_tictac {
+  display: inline;
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
+.make_inline {
+  display: inline;
+}
 
+.make_float_left {
+  clear: right;
+  float: left;
+}
+
+.make_block_clear {
+  display: block;
+  clear: both;
+}
 
 
 

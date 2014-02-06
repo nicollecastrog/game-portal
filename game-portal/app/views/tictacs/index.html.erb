@@ -1,11 +1,12 @@
-<p><%= link_to 'New Tictac', new_tictac_path %></p>
+<p class='new_tictac'>
+  <button type="button"><a href='<%= new_tictac_path %>'>New Tic-Tac-Toe Game</a></button>
+</p>
 
 
-<h1>Available Tic-Tac-Toe Games</h1>
+<h1>Ongoing Tic-Tac-Toe Games</h1>
 
 <table class='tictac_display'>
   <tr>
-    <th>Game Type</th>
     <th>Game Name</th>
     <th>Player1</th>
     <th>Player2</th>
@@ -15,10 +16,11 @@
     <th></th>
   </tr>
   <% @tictacs.each do |tictac| %>
+
   <% if tictac.result == 'still_active' %>
   <tr>
-    <td><%= tictac.game.name %></td>
     <td><%= tictac.name %></td>
+    <% if current_user %>
     <% if tictac.player1_id == current_user.id%>
       <td style='color: green; font-weight: bold;'>You</td>
       <% if tictac.player2_id != nil %>
@@ -40,13 +42,13 @@
         <td>Active</td>
         <td></td>
         <% end %> <!-- closing p1 != current_user p2 == current_user -->
-      <% else %> <!-- elsif player 2 does NOT exist -->
+      <% else %> <!-- elsif player 2 does NOT exist (is nil)-->
       <td></td> <!-- no player 2 name -->
       <td>Active</td>
       <td><%= link_to 'Join', join_path(tictac) %></td>
       <% end %> <!-- closing if player 2 exists and player is not current user-->
-    <% end %> <!-- closing if player 1 is current user (else)-->
-    
+    <% end %> <!-- closing if player 1 is current user (else)--> 
+  <% end %> <!-- closing if current user exists -->
   </tr>
   <% end %> <!-- closing if still active -->
   <% end %> <!-- closing for each tictac -->
@@ -57,7 +59,6 @@
 
 <table class='tictac_display'>
   <tr>
-    <th>Game Type</th>
     <th>Game Name</th>
     <th>Player1</th>
     <th>Player2</th>
@@ -70,7 +71,6 @@
   <% @tictacs.each do |tictac| %>
   <% if tictac.result != 'still_active' %>
   <tr>
-    <td><%= tictac.game.name %></td>
     <td><%= tictac.name %></td>
     <td><%= tictac.player1.name %></td>
     <td><%= tictac.player2_id %></td>

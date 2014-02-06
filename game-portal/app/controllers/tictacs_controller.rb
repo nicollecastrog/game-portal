@@ -15,10 +15,7 @@ class TictacsController < ApplicationController
   def show
     @tictac = Tictac.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @tictac }
-    end
+    redirect_to edit_tictac_path
   end
 
   # GET /tictacs/new
@@ -61,10 +58,16 @@ class TictacsController < ApplicationController
     redirect_to @tictac
   end
 
+  # def move
+  #   @tictac = Tictac.find(params[:id])
+  #   @tictac.make_move(params[:square], current_user)
+  # end
+
   # PUT /tictacs/1
   # PUT /tictacs/1.json
   def update
     @tictac = Tictac.find(params[:id])
+    @tictac.make_move(params[:square].to_i, current_user)
 
     respond_to do |format|
       if @tictac.update_attributes(params[:tictac])
@@ -88,4 +91,5 @@ class TictacsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

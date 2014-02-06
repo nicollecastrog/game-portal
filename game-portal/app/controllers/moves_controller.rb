@@ -1,7 +1,7 @@
 class MovesController < ApplicationController
   # GET /moves
   # GET /moves.json
-  before_filter :load_song
+  before_filter :load_tictac
   def index
     @move = @tictac.moves.all
 
