@@ -18,11 +18,73 @@ class Tictac < ActiveRecord::Base
     raise "it's not your turn" unless whose_turn == player.id
     raise "that space is occupied" if square_occupied?(square)
     raise "game is finished" if game_over?
+
     raise "that's not a valid square" unless square_is_in_bounds?(square)
     
     Move.create tictac_id: self.id, player_id: player.id, square: square, symbol: which_symbol
 
   end #closes make_move
+
+
+
+
+  def moves_made_array
+    moves_made_array = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
+    moves.each do |move|
+      moves_made_array[move.square] = move.symbol
+    end
+    return moves_made_array
+  end
+
+  def square_occupied?(square)
+    if moves_made_array[square] == nil
+      return false
+    else
+      return true
+    end
+  end
+
+  def whose_turn
+    if moves.count.even?
+      return player1_id
+    else
+      return player2_id
+    end
+  end
+
+  def who_just_played
+    if moves.count.even?
+      return player2_id
+    else
+      return player1_id
+    end
+  end
+
+  def game_over?
+    if check_rows? || check_columns? || check_diagonals?
+      winner = User.find(who_just_played)
+      winner.increment!(:score, by = 3)
+      self.result = "#{winner.id}"
+      self.update_attributes(:result => "#{winner.id}")
+      return true
+    elsif check_full_board?
+      p1 = User.find(player1_id)
+      p1.increment!(:score, by = 1)
+      p2 = User.find(player2_id)
+      p2.increment!(:score, by = 1)
+      self.result = "tie"
+      self.update_attributes(:result => "tie")
+      return true
+    else
+      return false
+    end
+  end
+
+  def update_score
+    if game_over?
+    else
+    end
+  end
 
 
 
@@ -42,32 +104,6 @@ class Tictac < ActiveRecord::Base
     moves.count.even? ? 'X' : 'O'
   end
 
-  private
-  def whose_turn
-    if moves.count.even?
-      return player1_id
-    else
-      return player2_id
-    end
-  end
-
-
-  def moves_made_array
-    moves_made_array = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
-    moves.each do |move|
-      moves_made_array[move.square] = move.symbol
-    end
-    return moves_made_array
-  end
-
-
-  def square_occupied?(square)
-    if moves_made_array[square] == nil
-      return false
-    else
-      return true
-    end
-  end
 
   private
   def check_rows?
@@ -116,15 +152,6 @@ class Tictac < ActiveRecord::Base
     end
     return true
   end 
-
-  private
-  def game_over?
-    if check_rows? || check_columns? || check_diagonals? || check_full_board?
-      return true
-    else
-      return false
-    end
-  end
 
   private
   def square_is_in_bounds?(square)

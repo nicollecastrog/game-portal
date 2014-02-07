@@ -1,36 +1,91 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @tictac.name %></h1>
 
-<h1>
-  <%= @tictac.name %>
-</h1>
+<div class="result"> 
+  <% if @tictac.result == "#{@tictac.player1_id}" %>
+  <h4><%= @tictac.player1.name %> won!</h4>
+  <% elsif @tictac.result == "#{@tictac.player2_id}" %>
+  <h4><%= @tictac.player2.name %> won!</h4>
+  <% else %>
+  <h4>It's a tie!</h4>
+  <% end %>
+</div>
 
-<%if @tictac.result != 'still_active' %>
-  <p>Result: <%= @tictac.result %></p>
-<% else %>
-  <h3><%= link_to 'PLAY', edit_tictac_path %></h3>
-<% end %>
+  
 
-<p>Current Board Status: </p>
+  <table id='tictac_board'>
+    <tr>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(0) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(0).symbol%></div>
+        <% else%>
+          
+        <% end %>  
+      </td>
+ 
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(1) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(1).symbol%></div>
+        <% else %>
 
-<table id='tictac_board'>
-  <tr>
-    <td class='square'>X</td>
-    <td class='square'>X</td>
-    <td class='square'>X</td>
-  </tr>
-  <tr>
-    <td class='square'>O</td>
-    <td class='square'>O</td>
-    <td class='square'>O</td>
-  </tr>
-  <tr>
-    <td class='square'>X</td>
-    <td class='square'>X</td>
-    <td class='square'>X</td>
-  </tr>
-</table>
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(2) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(2).symbol%></div>
+        <% else %>
 
-<p class='scoreboard'>
-</p>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(3) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(3).symbol%></div>
+        <% else %>
 
-<%= link_to 'Back', tictacs_path %>
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(4) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(4).symbol%></div>
+        <% else %>
+
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(5) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(5).symbol%></div>
+        <% else %>
+
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(6) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(6).symbol%></div>
+        <% else %>
+
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(7) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(7).symbol%></div>
+        <% else %>
+
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(8) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(8).symbol%></div>
+        <% else %>
+
+        <% end %>
+      </td>
+    </tr>
+  </table>
+
+
+
+
+<%= link_to '< Back', tictacs_path %>

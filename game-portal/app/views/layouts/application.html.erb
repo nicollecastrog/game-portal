@@ -4,7 +4,7 @@
   <title>Jogo - <%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -16,30 +16,29 @@
       <div id='topstuff'>
         <div class='container'>
           <div id='logo' class='five columns alpha'>
-            <h1>Jogo</h1>
+            <img src='http://i.imgur.com/Vuw3xYn.png'>
           </div> <!-- closes logo -->
 
           <div class='warning'>
           <% flash.each do |name, msg| %>
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>
+          <% flash.now[:error] %>
           </div> <!-- closes .warning -->
 
           <ul>
-            <li>
-              <%=link_to 'login', new_session_path %>
-            </li>
-            <li>
-              <%=link_to 'sign up', new_user_path %>
-            </li>
-            <br>
-            <li>
-              <% if current_user %>
-              <%=current_user.email%><br>
-              <%=link_to 'My Profile', current_user %><br>
-              <%= link_to 'logout', logout_path %>
-              <% end %>
-            </li>
+            <% if current_user %>
+              <li><%=current_user.email%></li>
+              <li><%=link_to 'My Profile', current_user %></li>
+              <li><%= link_to 'logout', logout_path %></li>
+            <% else %>  
+              <li>
+                <%=link_to 'login', new_session_path %>
+              </li>
+              <li>
+                <%=link_to 'sign up', new_user_path %>
+              </li>
+            <% end %>
           </ul>
         </div> 
       </div> <!-- closes #topstuff -->

@@ -13,11 +13,12 @@
  */
 
 body {
-background: url("http://backgroundku.com/wp-content/uploads/2013/08/Super%2BMario%2BBros%2Bhd%2Bwallpaper%2B3.jpg");
+background: url("http://i.imgur.com/somIRW4.jpg");
+/*background-repeat: repeat;*/
 /* the follow is the code to have the image display as a full page */
 background-position: center;
 background-attachment: fixed;
--webkit-background-size: cover; /* the next 3 lines are "browser prefixes", they are necessary to include for CSS3 techniques */
+-webkit-background-size: cover;  /*the next 3 lines are "browser prefixes", they are necessary to include for CSS3 techniques */
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
@@ -25,14 +26,19 @@ font-family: 'Droid Sans', sans-serif;
 }
 
 h1 {
-  font-family: 'The Girl Next Door', cursive;
+  font-family: 'Droid Serif', serif ;
+  font-weight: 400;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.0);
 }
 
 
 #topstuff {
   margin: 30px 0px;
   padding: 11px 0px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
@@ -46,28 +52,50 @@ h1 {
 }
 
 #topstuff ul {
+  display: inline;
   text-align: right;
   margin-right: 2%;
   color: white;
+  float: right;
 }
 
 #topstuff a {
   color: white;
 }
 
-#logo {
-  text-align: left;
-  margin-left: 1%;
+.warning {
+  display: inline;
 }
 
-#logo h1 {
+#flash_notice {
+  display: inline;
+  padding-top: 13px;
+}
+
+#logo {
+  height: 108px;
+  /*text-align: left;*/
+  /*margin-left: 1%;*/
+  margin-top: 0px;
+}
+
+/*#logo h1 {
+  display: inline;
   font-size: 3em;
   margin-top: 0em;
   margin-bottom: 0em;
+  position: relative;
+  top: 40%;
+}*/
+
+#logo img {
+  max-width: 200px;
+  position: relative;
+  top: 20%;
 }
 
 nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   margin-left: 0px;
   text-align: left;
   color: white;
@@ -97,6 +125,8 @@ nav a {
 
 #content h1 {
   margin-top: 0em;
+  font-size: 1.5em;
+  color: #223E4A;
 }
 
 a {
@@ -108,7 +138,7 @@ ul {
 }
 
 #tictac_board {
-
+  margin-bottom: 15px;
 }
 
 .square {
@@ -118,7 +148,7 @@ ul {
   font-size: 18px;
 }
 
-.tictac_display{
+.tictac_display {
   margin-bottom: 55px;
 }
 
@@ -146,6 +176,70 @@ ul {
 .make_block_clear {
   display: block;
   clear: both;
+}
+
+@media only screen and (max-width: 767px) {
+  /*polishes up mobile (both portrait and landscape) experience*/
+  nav {
+    background: none;
+    text-align: left;
+  }
+
+  nav ul {
+    padding-left: 0px;
+  }
+
+  nav ul li {
+    margin-bottom: 7px;
+    display: block;
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  nav ul li a{
+    padding-left: 20px;
+    /*line-height: 2em;*/
+  }
+
+  nav ul li a:last-child{
+    line-height: 2em;
+  }
+
+  #logo img {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+  }
+
+  #topstuff ul {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    padding-left: 0px;
+    width: 100%;
+  }
+
+  #topstuff ul li {
+    display: block;
+    clear: both;
+    margin: 12px auto;
+    text-align: center;
+  }
+
+  .warning {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+  }
+
+  #flash_notice {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    padding-top: 13px;
+    text-align: center;
+  }
 }
 
 

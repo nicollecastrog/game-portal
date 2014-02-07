@@ -1,5 +1,9 @@
 <h1><%= @tictac.name %></h1>
 
+<div class="result">
+  <h4>Status: Active Game</h4>
+</div>
+
 <%= form_for(@tictac) do |f| %>
 
   
@@ -10,73 +14,105 @@
       <td class='square'>
         <%if @tictac.moves.find_by_square(0) != nil %>
           <div style="color: blue;"><%= @tictac.moves.find_by_square(0).symbol%></div>
-        <% else %>
+        <% elsif @tictac.moves.find_by_square(0) == nil && @tictac.game_over? == false %>
           <% if current_user.id == @tictac.player1_id%>
-          <button type="submit" name="square" value="sq0">X</button>
+          <button type="submit" name="square" value="0">X</button>
           <% else %>
-          <button type="submit" name="square" value="sq0">O</button>
+          <button type="submit" name="square" value="0">O</button>
           <% end %>
         <% end %>  
       </td>
  
       <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
+        <%if @tictac.moves.find_by_square(1) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(1).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(1) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="1">X</button>
+          <% else %>
+          <button type="submit" name="square" value="1">O</button>
+          <% end %>
         <% end %>
       </td>
       <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
-        <% end %>
-      </td>
-      <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
-        <% end %>
-      </td>
-      <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
+        <%if @tictac.moves.find_by_square(2) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(2).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(2) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="2">X</button>
+          <% else %>
+          <button type="submit" name="square" value="2">O</button>
+          <% end %>
         <% end %>
       </td>
     </tr>
     <tr>
       <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
+        <%if @tictac.moves.find_by_square(3) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(3).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(3) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="3">X</button>
+          <% else %>
+          <button type="submit" name="square" value="3">O</button>
+          <% end %>
         <% end %>
       </td>
       <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
+        <%if @tictac.moves.find_by_square(4) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(4).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(4) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="4">X</button>
+          <% else %>
+          <button type="submit" name="square" value="4">O</button>
+          <% end %>
         <% end %>
       </td>
       <td class='square'>
-        <% if current_user.id == @tictac.player1_id%>
-        <button type="submit" value="sq0">X</button>
-        <% else %>
-        <button type="submit" value="sq0">O</button>
+        <%if @tictac.moves.find_by_square(5) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(5).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(5) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="5">X</button>
+          <% else %>
+          <button type="submit" name="square" value="5">O</button>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(6) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(6).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(6) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="6">X</button>
+          <% else %>
+          <button type="submit" name="square" value="6">O</button>
+          <% end %>
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(7) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(7).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(7) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="7">X</button>
+          <% else %>
+          <button type="submit" name="square" value="7">O</button>
+          <% end %>
+        <% end %>
+      </td>
+      <td class='square'>
+        <%if @tictac.moves.find_by_square(8) != nil %>
+          <div style="color: blue;"><%= @tictac.moves.find_by_square(8).symbol%></div>
+        <% elsif @tictac.moves.find_by_square(8) == nil && @tictac.game_over? == false %>
+          <% if current_user.id == @tictac.player1_id%>
+          <button type="submit" name="square" value="8">X</button>
+          <% else %>
+          <button type="submit" name="square" value="8">O</button>
+          <% end %>
         <% end %>
       </td>
     </tr>
@@ -84,8 +120,6 @@
   </table>
 
 
-  <div class="actions">
-  </div>
 <% end %>
 
-<%= link_to 'All Tic-Tac-Toe Games', tictacs_path %>
+<%= link_to '< Back', tictacs_path %>

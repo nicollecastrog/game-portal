@@ -15,7 +15,6 @@ class TictacsController < ApplicationController
   def show
     @tictac = Tictac.find(params[:id])
 
-    redirect_to edit_tictac_path
   end
 
   # GET /tictacs/new
@@ -70,8 +69,12 @@ class TictacsController < ApplicationController
     @tictac.make_move(params[:square].to_i, current_user)
 
     respond_to do |format|
-      if @tictac.update_attributes(params[:tictac])
+      
+      if @tictac.game_over? && @tictac.update_attributes(params[:tictac])
         format.html { redirect_to @tictac, notice: 'Tictac was successfully updated.' }
+        format.json { head :no_content }
+      elsif @tictac.game_over? == false && @tictac.update_attributes(params[:tictac])
+        format.html { redirect_to action: "edit"}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

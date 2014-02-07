@@ -65,21 +65,42 @@
     <th>Result</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
   <% @tictacs.each do |tictac| %>
-  <% if tictac.result != 'still_active' %>
-  <tr>
-    <td><%= tictac.name %></td>
-    <td><%= tictac.player1.name %></td>
-    <td><%= tictac.player2_id %></td>
-    <td><%= tictac.result %></td>
-    <td><%= link_to 'Show', tictac %></td>
-    <td><%= link_to 'Destroy', tictac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-  <% end %>
+    <% if tictac.result != 'still_active' %>
+      <% if current_user %>
+    <tr>
+      <td><%= tictac.name %></td>
+
+      <% if tictac.player1_id == current_user.id%>
+      <td style='color: green; font-weight: bold;'>You</td>
+      <% else %>
+      <td><%= tictac.player1.name %></td>
+      <% end %>
+
+      <% if tictac.player2_id == current_user.id%>
+      <td style='color: green; font-weight: bold;'>You</td>
+      <% else %>
+      <td><%= tictac.player2.name %></td>
+      <% end %>
+
+      <% if tictac.result == "#{current_user.id}" %>
+        <td style='color: green; font-weight: bold;'>You Won</td>
+      <% elsif tictac.result == "#{tictac.player1_id}" %>
+        <td><%= tictac.player1.name %> won!</td>
+      <% elsif tictac.result == "#{tictac.player2_id}" %>
+        <td><%= tictac.player2.name %> won!</td>
+      <% elsif tictac.result == "tie"%>
+        <td>It's a tie!</td>
+      <% end %>
+
+
+      <td><%= link_to 'Show', tictac %></td>
+    </tr>
+      <% end %> <!-- closing if current user exists -->
+    <% end %> <!-- closing if NOT active -->
+  <% end %> <!-- closing for each tictac -->
 </table>
 
 
