@@ -13,16 +13,18 @@
  */
 
 body {
-background: url("http://i.imgur.com/somIRW4.jpg");
-/*background-repeat: repeat;*/
-/* the follow is the code to have the image display as a full page */
-background-position: center;
-background-attachment: fixed;
--webkit-background-size: cover;  /*the next 3 lines are "browser prefixes", they are necessary to include for CSS3 techniques */
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-font-family: 'Droid Sans', sans-serif;
+  /*background: url("http://i.imgur.com/WeUnkCh.png"); */ 
+  background: url("http://i.imgur.com/DS3RSwl.jpg");
+  /*background: url("http://i.imgur.com/somIRW4.jpg");*/
+  /*background-repeat: repeat;*/
+  /* the follow is the code to have the image display as a full page */
+  background-position: center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;  /*the next 3 lines are "browser prefixes", they are necessary to include for CSS3 techniques */
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Droid Sans', sans-serif;
 }
 
 h1 {
@@ -114,7 +116,8 @@ nav a {
 }
 
 #main_content {
-  background-color: rgba(255, 255, 255, 0.9);
+  background: url("http://i.imgur.com/nlaNQOK.png");
+  background-repeat: repeat;
   margin-right: 0px;
   margin-bottom: 30px;
 }
@@ -126,7 +129,7 @@ nav a {
 #content h1 {
   margin-top: 0em;
   font-size: 1.5em;
-  color: #223E4A;
+  color: #4776C8;
 }
 
 a {
@@ -239,6 +242,11 @@ ul {
     margin: 0 auto;
     padding-top: 13px;
     text-align: center;
+  }
+
+  #logo img {
+    position: relative;
+    top: 0%;
   }
 }
 

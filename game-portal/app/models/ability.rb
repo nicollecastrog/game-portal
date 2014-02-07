@@ -15,6 +15,7 @@ class Ability
       cannot [:create, :update, :destroy, :new], Game
     else
       can [:create, :new], User
+      can [:read], :all
       # read is the equivalent of the index and show views
     end
 
